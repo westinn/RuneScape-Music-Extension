@@ -5,25 +5,24 @@
     "version": "0.0.1",
     "background": {
         "scripts": [
-            "/js/background.js",
-            "/js/dropbox_js/dropbox.min.js"
+            "/scripts/background.js"
         ],
         "persistent": true
-    },
-    "icons": {
-        "16": "/images/icon16.png",
-        "32": "/images/icon32.png",
-        "48": "/images/icon48.png",
-        "128": "/images/icon128.png",
-        "200": "/images/icon200.png"
-    },
-    "browser_action": {
-        "default_title": "RuneScape Music"
     },
     "permissions": [
         "https://*/*",
         "http://*/*",
         "tabs",
         "unlimitedStorage"
-    ]
+    ],
+    "icons": {
+        "16": "/images/icon16.png",
+        "32": "/images/icon32.png",
+        "48": "/images/icon48.png",
+        "128": "/images/icon128.png",
+        "256": "/images/icon256.png"
+    },
+    "browser_action": {
+        "default_title": "RuneScape Music"
+    }
 }

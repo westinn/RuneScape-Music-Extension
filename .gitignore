@@ -1,6 +1,6 @@
-/js/dropbox_js/*
-/js/jquery/*
 /music/*
+/scripts/dropbox_js/*
+
 
 # Windows image file caches
 Thumbs.db
