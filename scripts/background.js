@@ -9,12 +9,16 @@ function pickSong() {
 }
 
 chrome.browserAction.onClicked.addListener(function(tab) {
+    // Not on and clicked
     if (!onState) {
         myAudio.src = pickSong();
         myAudio.currentTime = 0;
+        myAudio.volume = .75;
         myAudio.play();
         onState = true;
-    } else {
+    }
+    // On and clicked
+    else {
         myAudio.pause();
         onState = false;
     }
@@ -23,5 +27,6 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 myAudio.addEventListener("ended", function() {
     myAudio.src = pickSong();
     myAudio.currentTime = 0;
+    myAudio.volume = .75;
     myAudio.play();
 });
