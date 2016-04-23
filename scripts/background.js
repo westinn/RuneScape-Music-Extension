@@ -1,6 +1,7 @@
 var myAudio = new Audio(),
     onState = false;
 const NUM_OF_FILES = 60;
+myAudio.volume = .60;
 
 function pickSong() {
     var min = 0;
@@ -13,7 +14,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     if (!onState) {
         myAudio.src = pickSong();
         myAudio.currentTime = 0;
-        myAudio.volume = .75;
+        myAudio.volume = .60;
         myAudio.play();
         onState = true;
     }
@@ -27,6 +28,6 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 myAudio.addEventListener("ended", function() {
     myAudio.src = pickSong();
     myAudio.currentTime = 0;
-    myAudio.volume = .75;
+    myAudio.volume = .60;
     myAudio.play();
 });
