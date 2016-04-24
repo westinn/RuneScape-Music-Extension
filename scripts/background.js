@@ -11,6 +11,12 @@ function pickSong() {
     return '/music/' + index + '.mp3';
 }
 
+function playSong() {
+    myAudio.src = pickSong();
+    myAudio.currentTime = 0;
+    myAudio.play();
+}
+
 function changeIcon(state) {
     // On and want to change to play symbol
     if (state) {
@@ -33,9 +39,7 @@ function changeIcon(state) {
 chrome.browserAction.onClicked.addListener(function(tab) {
     // Not on and clicked
     if (!onState) {
-        myAudio.src = pickSong();
-        myAudio.currentTime = 0;
-        myAudio.play();
+        playSong();
         onState = true;
         changeIcon(onState);
     }
@@ -47,10 +51,4 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     }
 });
 
-myAudio.addEventListener("ended", function() {
-    if (state) {
-        myAudio.src = pickSong();
-        myAudio.currentTime = 0;
-        myAudio.play();
-    }
-});
+myAudio.addEventListener("ended", playSong());
