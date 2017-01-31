@@ -16,19 +16,12 @@ function playSong() {
     myAudio.src = pickSong();
     myAudio.currentTime = 0;
     myAudio.play();
-    myAudio.paused = false;
     changeIcon();
 }
 
 function pauseSong() {
     myAudio.pause();
-    myAudio.paused = true;
     changeIcon();
-}
-
-function restartSong() {
-    pauseSong();
-    playSong();
 }
 
 function changeIcon() {
@@ -61,6 +54,6 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     }
 })
 
-myAudio.addEventListener("ended", restartSong());
+myAudio.addEventListener("ended", playSong);
 
 changeIcon();
