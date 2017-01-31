@@ -1,5 +1,4 @@
-var myAudio = new Audio(),
-    onState = false;
+var myAudio = new Audio();
 const NUM_OF_FILES = 60;
 const VOLUME = 0.5;
 
@@ -12,14 +11,28 @@ function pickSong() {
 }
 
 function playSong() {
+    myAudio.pause();
     myAudio.src = pickSong();
     myAudio.currentTime = 0;
     myAudio.play();
+    myAudio.paused = false;
+    changeIcon();
 }
 
-function changeIcon(state) {
+function pauseSong() {
+    myAudio.pause();
+    myAudio.paused = true;
+    changeIcon();
+}
+
+function restartSong() {
+    pauseSong();
+    playSong();
+}
+
+function changeIcon() {
     // On and want to change to play symbol
-    if (state) {
+    if (!myAudio.paused) {
         chrome.browserAction.setIcon({
             path: {
                 "38": "/images/icon38play.png"
@@ -38,17 +51,15 @@ function changeIcon(state) {
 
 chrome.browserAction.onClicked.addListener(function(tab) {
     // Not on and clicked
-    if (!onState) {
+    if (myAudio.paused) {
         playSong();
-        onState = true;
-        changeIcon(onState);
     }
     // On and clicked
     else {
-        myAudio.pause();
-        onState = false;
-        changeIcon(onState);
+        pauseSong();
     }
-});
+})
 
-myAudio.addEventListener("ended", playSong());
+myAudio.addEventListener("ended", restartSong());
+
+changeIcon();
