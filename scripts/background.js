@@ -1,4 +1,5 @@
 var myAudio = new Audio();
+myAudio.loop = false;
 const NUM_OF_FILES = 60;
 const VOLUME = 0.5;
 
