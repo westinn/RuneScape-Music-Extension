@@ -54,6 +54,6 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     }
 })
 
-myAudio.addEventListener("ended", playSong);
+myAudio.addEventListener("ended", playSong());
 
 changeIcon();
