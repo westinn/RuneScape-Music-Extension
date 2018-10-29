@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "RuneScape Music",
     "description": "This extension will play a random song from the RuneScape Soundtrack.",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "background": {
         "scripts": [
             "/scripts/background.js"
@@ -10,9 +10,6 @@
         "persistent": true
     },
     "permissions": [
-        "https://*/*",
-        "http://*/*",
-        "tabs",
         "unlimitedStorage"
     ],
     "icons": {
